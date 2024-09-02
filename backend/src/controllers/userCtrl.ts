@@ -42,7 +42,7 @@ export const userSignUpCtrl = async(req: Request, res: Response)=>{
             }
         });
         
-        res.json(newUser);
+        return res.json(newUser);
 
     } catch (error) {
         return res.json({message: "Something went wrong while creating your account"});
@@ -81,9 +81,9 @@ export const userSignInCtrl = async (req: Request, res: Response)=>{
 
         res.cookie('token', token);
 
-        res.json({message: "You are now signed in"});
+        return res.json({message: "You are now signed in"});
 
     } catch (error) {
-        res.json({message: "Failed to login, try again"});
+        return res.json({message: "Failed to login, try again"});
     }
 }

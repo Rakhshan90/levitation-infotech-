@@ -18,7 +18,7 @@ const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
     const token = req.cookies.token;
     if (!token) {
         res.status(404);
-        res.json({ message: "Unauthorized access, Try login again" });
+        return res.json({ message: "Unauthorized access, Try login again" });
     }
     try {
         const decode = yield jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET_KEY);
@@ -26,7 +26,7 @@ const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         next();
     }
     catch (error) {
-        res.json({ message: "Failed to validate user, try login again" });
+        return res.json({ message: "Failed to validate user, try login again" });
     }
 });
 exports.authMiddleware = authMiddleware;

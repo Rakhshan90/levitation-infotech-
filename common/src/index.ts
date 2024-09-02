@@ -15,3 +15,21 @@ export const signInSchema = zod.object({
 });
 
 export type signInType = zod.infer<typeof signInSchema>;
+
+export const formSchema = zod.object({
+    step: zod.number(),
+    userId: zod.number(),
+    name: zod.string().min(1),
+    email: zod.string().email(),
+    phoneNumber: zod.string().min(10),
+    addressLine1: zod.string(),
+    addressLine2: zod.string().optional(),
+    city: zod.string(),
+    state: zod.string(),
+    pincode: zod.string(),
+    country: zod.string(),
+    fileUrls: zod.array(zod.string()),
+    multiSelect: zod.array(zod.string())
+});
+
+export type formType = zod.infer<typeof formSchema>;

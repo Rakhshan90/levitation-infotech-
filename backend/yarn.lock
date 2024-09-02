@@ -83,10 +83,10 @@
   dependencies:
     "@prisma/debug" "5.19.0"
 
-"@rakhshan90/levitation-validation@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rakhshan90/levitation-validation/-/levitation-validation-1.0.0.tgz#e472ccc6428c74766ba583b8dc0aea724b32b30d"
-  integrity sha512-hMnI4gAyN8pDoU+55Uii4TMGXxyJWwxWnxGW41UBL1Ho3/zwntPJyBO70WAeYuFuHR+6EpEBmeSzrSgFIWiFew==
+"@rakhshan90/levitation-validation@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@rakhshan90/levitation-validation/-/levitation-validation-1.0.2.tgz#2aab0015e589e9f05ffe8e555f88631e42f17680"
+  integrity sha512-RY/GqroS6y5X2MteeL5CUPnceUak9hB/YzAxyFEAjowRIIEPbpJanvAnfEx9OIWnSglhNvw/IAHd2zeTeid8hg==
   dependencies:
     zod "^3.23.8"
 

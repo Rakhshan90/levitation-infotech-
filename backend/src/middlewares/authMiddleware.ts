@@ -7,7 +7,7 @@ export const authMiddleware = async (req: any, res: Response, next: NextFunction
     const token = req.cookies.token;
     if (!token) {
         res.status(404);
-        res.json({ message: "Unauthorized access, Try login again" });
+        return res.json({ message: "Unauthorized access, Try login again" });
     }
 
     try {
@@ -16,7 +16,7 @@ export const authMiddleware = async (req: any, res: Response, next: NextFunction
         next();
 
     } catch (error) {
-        res.json({message: "Failed to validate user, try login again"});
+        return res.json({message: "Failed to validate user, try login again"});
     }
 
 }

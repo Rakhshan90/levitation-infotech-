@@ -1,11 +1,19 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
+import {formSchema} from '@rakhshan90/levitation-validation';
 
 const client = new PrismaClient();
 
 export const handleFormSubmissionCtrl = async (req: Request, res: Response) => {
     
   const { step, userId, name, email, phoneNumber, addressLine1, addressLine2, city, state, pincode, country, fileUrls, multiSelect } = req.body;
+
+  const {success} = formSchema.safeParse({step, userId, name, email, phoneNumber, addressLine1, addressLine2, city, state, pincode, country, fileUrls, multiSelect});
+
+  if(!success){
+    res.status(403);
+    return res.json({message: "Invalid input type"});
+  }
 
   try {
     let submission;
@@ -50,9 +58,9 @@ export const handleFormSubmissionCtrl = async (req: Request, res: Response) => {
         return res.status(400).json({ message: "Invalid step" });
     }
 
-    res.json({ message: "Form has been submitted", submission });
+    return res.json({ message: "Form has been submitted", submission });
 
   } catch (error) {
-    res.json({ message: "Error while submitting form, try again", error });
+    return res.json({ message: "Error while submitting form, try again", error });
   }
 };

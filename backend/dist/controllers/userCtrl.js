@@ -45,7 +45,7 @@ const userSignUpCtrl = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 email: true
             }
         });
-        res.json(newUser);
+        return res.json(newUser);
     }
     catch (error) {
         return res.json({ message: "Something went wrong while creating your account" });
@@ -74,10 +74,10 @@ const userSignInCtrl = (req, res) => __awaiter(void 0, void 0, void 0, function*
         }
         const token = yield jsonwebtoken_1.default.sign({ userId: findUser === null || findUser === void 0 ? void 0 : findUser.id }, process.env.JWT_SECRET_KEY);
         res.cookie('token', token);
-        res.json({ message: "You are now signed in" });
+        return res.json({ message: "You are now signed in" });
     }
     catch (error) {
-        res.json({ message: "Failed to login, try again" });
+        return res.json({ message: "Failed to login, try again" });
     }
 });
 exports.userSignInCtrl = userSignInCtrl;

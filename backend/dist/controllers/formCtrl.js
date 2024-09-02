@@ -11,9 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleFormSubmissionCtrl = void 0;
 const client_1 = require("@prisma/client");
+const levitation_validation_1 = require("@rakhshan90/levitation-validation");
 const client = new client_1.PrismaClient();
 const handleFormSubmissionCtrl = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { step, userId, name, email, phoneNumber, addressLine1, addressLine2, city, state, pincode, country, fileUrls, multiSelect } = req.body;
+    const { success } = levitation_validation_1.formSchema.safeParse({ step, userId, name, email, phoneNumber, addressLine1, addressLine2, city, state, pincode, country, fileUrls, multiSelect });
+    if (!success) {
+        res.status(403);
+        return res.json({ message: "Invalid input type" });
+    }
     try {
         let submission;
         switch (step) {
@@ -52,10 +58,10 @@ const handleFormSubmissionCtrl = (req, res) => __awaiter(void 0, void 0, void 0,
             default:
                 return res.status(400).json({ message: "Invalid step" });
         }
-        res.json({ message: "Form has been submitted", submission });
+        return res.json({ message: "Form has been submitted", submission });
     }
     catch (error) {
-        res.json({ message: "Error while submitting form, try again", error });
+        return res.json({ message: "Error while submitting form, try again", error });
     }
 });
 exports.handleFormSubmissionCtrl = handleFormSubmissionCtrl;
