@@ -14,7 +14,7 @@ dotenv_1.default.config();
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    origin: "http://localhost:5173",
+    origin: "https://levitation-infotech-1-yyfd.onrender.com",
     credentials: true
 }));
 app.use('/api/user', userRouter_1.default);
