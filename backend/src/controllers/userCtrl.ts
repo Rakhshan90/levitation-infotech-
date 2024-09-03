@@ -87,3 +87,8 @@ export const userSignInCtrl = async (req: Request, res: Response)=>{
         return res.json({message: "Failed to login, try again"});
     }
 }
+
+export const userSignOutCtrl = async (req: Request, res: Response)=>{
+    res.cookie('token', '');
+    return res.json({message: "You are now signed out"});
+}

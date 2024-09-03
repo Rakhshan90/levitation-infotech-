@@ -14,8 +14,8 @@ dotenv_1.default.config();
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    credentials: true,
-    origin: "http://localhost:5173"
+    origin: "http://localhost:5173",
+    credentials: true
 }));
 app.use('/api/user', userRouter_1.default);
 app.use('/api/form', formRouter_1.default);

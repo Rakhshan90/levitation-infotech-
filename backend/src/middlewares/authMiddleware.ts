@@ -12,7 +12,7 @@ export const authMiddleware = async (req: any, res: Response, next: NextFunction
 
     try {
         const decode = await jwt.verify(token, process.env.JWT_SECRET_KEY as string) as JwtPayload;
-        req.userId = {userId: decode.userId};
+        req.userId = decode.userId;
         next();
 
     } catch (error) {

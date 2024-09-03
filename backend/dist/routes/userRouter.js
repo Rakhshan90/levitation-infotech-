@@ -8,4 +8,5 @@ const userCtrl_1 = require("../controllers/userCtrl");
 const userRouter = express_1.default.Router();
 userRouter.post('/signup', userCtrl_1.userSignUpCtrl);
 userRouter.post('/signin', userCtrl_1.userSignInCtrl);
+userRouter.post('/signout', userCtrl_1.userSignOutCtrl);
 exports.default = userRouter;

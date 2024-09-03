@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userSignInCtrl = exports.userSignUpCtrl = void 0;
+exports.userSignOutCtrl = exports.userSignInCtrl = exports.userSignUpCtrl = void 0;
 const levitation_validation_1 = require("@rakhshan90/levitation-validation");
 const client_1 = require("@prisma/client");
 const bcrypt_1 = __importDefault(require("bcrypt"));
@@ -81,3 +81,8 @@ const userSignInCtrl = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.userSignInCtrl = userSignInCtrl;
+const userSignOutCtrl = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.cookie('token', '');
+    return res.json({ message: "You are now signed out" });
+});
+exports.userSignOutCtrl = userSignOutCtrl;
