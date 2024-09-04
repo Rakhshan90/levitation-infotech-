@@ -73,7 +73,11 @@ const userSignInCtrl = (req, res) => __awaiter(void 0, void 0, void 0, function*
             return res.json({ message: "Invalid password" });
         }
         const token = yield jsonwebtoken_1.default.sign({ userId: findUser === null || findUser === void 0 ? void 0 : findUser.id }, process.env.JWT_SECRET_KEY);
-        res.cookie('token', token);
+        res.cookie('token', token, {
+            sameSite: 'none',
+            httpOnly: true,
+            secure: true,
+        });
         return res.json({ message: "You are now signed in" });
     }
     catch (error) {

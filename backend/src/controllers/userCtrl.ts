@@ -79,7 +79,11 @@ export const userSignInCtrl = async (req: Request, res: Response)=>{
 
         const token = await jwt.sign({userId: findUser?.id}, process.env.JWT_SECRET_KEY as string);
 
-        res.cookie('token', token);
+        res.cookie('token', token, {
+            sameSite: 'none',
+            httpOnly: true,
+            secure: true,
+        });
 
         return res.json({message: "You are now signed in"});
 
