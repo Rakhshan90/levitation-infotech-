@@ -14,9 +14,9 @@ import { Button } from './ui/button';
 interface StepOneProps {
     onNext: () => void;
     step: number;
-  }
+}
 
-  const StepOne: React.FC<StepOneProps> = ({ onNext, step }) => {
+const StepOne: React.FC<StepOneProps> = ({ onNext, step }) => {
 
     const [formData, setFormData] = useState<formType>({
         name: '',
@@ -36,7 +36,7 @@ interface StepOneProps {
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            await axios.post(`${backendURL}/api/form/submit`, {...formData, step}, {withCredentials: true});
+            await axios.post(`${backendURL}/api/form/submit`, { ...formData, step }, { withCredentials: true });
             setLoading(false);
             onNext();
         } catch (error: any) {
@@ -62,7 +62,7 @@ interface StepOneProps {
 
             <div className="flex justify-center">
                 <div className="flex flex-col gap-4 w-96">
-                    <div className="flex gap-4 justify-center">
+                    <div className="flex flex-col gap-4 justify-center items-center lg:flex-row">
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="name">Name</Label>
                             <Input type="text" id="name" placeholder="Your name" className='w-60'
@@ -90,7 +90,7 @@ interface StepOneProps {
                         </div>
                     </div>
 
-                    <div className="flex gap-4 justify-center">
+                    <div className="flex flex-col gap-4 justify-center items-center lg:flex-row">
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="phone">Phone</Label>
                             <Input type="text" id="phone" placeholder='Enter your phone number' className='w-60'
@@ -119,7 +119,7 @@ interface StepOneProps {
                         </div>
                     </div>
 
-                    <div className="flex gap-4 justify-center">
+                    <div className="flex flex-col gap-4 justify-center items-center lg:flex-row">
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="addressLine2">Address Line 2</Label>
                             <Input type="text" id="addressLine2" placeholder='Enter your address 2'
@@ -147,7 +147,7 @@ interface StepOneProps {
                                 }} />
                         </div>
                     </div>
-                    <div className="flex gap-4 justify-center">
+                    <div className="flex flex-col gap-4 justify-center items-center lg:flex-row">
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="state">State</Label>
                             <Input type="text" id="state" placeholder='Enter your state'
@@ -175,7 +175,7 @@ interface StepOneProps {
                                 }} />
                         </div>
                     </div>
-                    <div className="flex gap-4 justify-center">
+                    <div className="flex flex-col gap-4 justify-center items-center lg:flex-row">
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="country">Country</Label>
                             <Input type="text" id="country" placeholder='Enter your country'
@@ -191,7 +191,7 @@ interface StepOneProps {
                         </div>
                     </div>
                     <div className="flex justify-center">
-                    <Button onClick={handleSubmit} className='bg-blue-600 text-white'>Next</Button>
+                        <Button onClick={handleSubmit} className='bg-blue-600 text-white'>Next</Button>
                     </div>
                 </div>
             </div>

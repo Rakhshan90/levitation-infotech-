@@ -43,7 +43,7 @@ const Form = () => {
   return (
     <div className='min-h-screen px-4 lg:px-0 flex flex-col justify-center max-w-lg mx-auto'>
 
-      <Progress value={(step / 3) * 100} />
+      <Progress className='mt-6' value={(step / 3) * 100} />
 
 
       {renderComponent()}
