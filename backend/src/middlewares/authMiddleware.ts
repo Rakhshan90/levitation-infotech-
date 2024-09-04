@@ -5,6 +5,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 export const authMiddleware = async (req: any, res: Response, next: NextFunction) => {
 
     const token = req.cookies.token;
+    console.log(token);
     if (!token) {
         res.status(404);
         return res.json({ message: "Unauthorized access, Try login again" });

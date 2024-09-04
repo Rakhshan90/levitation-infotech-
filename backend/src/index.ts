@@ -12,8 +12,8 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: "https://levitation-infotech-1-yyfd.onrender.com/",
-    credentials: true
+    origin: "https://levitation-infotech-1-yyfd.onrender.com",
+    credentials: true,
 }));
 
 app.use('/api/user', userRouter);
