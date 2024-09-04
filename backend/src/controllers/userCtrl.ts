@@ -83,6 +83,7 @@ export const userSignInCtrl = async (req: Request, res: Response)=>{
             sameSite: 'none',
             httpOnly: true,
             secure: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie will be valid for 7 days
         });
 
         return res.json({message: "You are now signed in"});
